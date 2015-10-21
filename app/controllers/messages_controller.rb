@@ -10,9 +10,9 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
-    #@message = Message.find(params[:id])
-    #@user_who_commented = @current_user
-    #@comment = Comment.build_from( @message, @user_who_commented.id, "Hey guys this is my comment!" )    
+    @message = Message.find(params[:id])
+    @user_who_commented = @current_user
+    @comment = Comment.build_from( @message, @user_who_commented, "Hey guys this is my comment!" )    
   end
 
   # GET /messages/new
