@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'acts_as_commentable_with_threading'
 gem 'faker'
+gem 'awesome_nested_set'
+gem 'devise'
 
 
 
