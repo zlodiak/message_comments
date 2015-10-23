@@ -15,6 +15,9 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+    @parent_id = params[:parent_id]
+    message_id = Comment.find(@parent_id).commentable_id
+    @message = Message.find(message_id)
   end
 
   # GET /comments/1/edit

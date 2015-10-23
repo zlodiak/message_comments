@@ -17,6 +17,8 @@
     t:: <%= comment.title %>
     <br>
     b:: <%= comment.body %>
+    <br />
+    <%= link_to 'answer', new_comment_path(parent_id: comment.id) %>
     <hr />
   </div>
 <% end %>
