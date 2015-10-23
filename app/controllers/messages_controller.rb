@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @all_comments = @message.comment_threads  
+    #@all_comments = @message.root_comments
 
     p '========================='
     p @all_comments.count

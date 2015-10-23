@@ -19,6 +19,8 @@
     b:: <%= comment.body %>
     <br />
     <%= link_to 'answer', new_comment_path(parent_id: comment.id) %>
+    has children?: <%= comment.has_children? %>
+    children size: <%= comment.children.size %>
     <hr />
   </div>
 <% end %>
