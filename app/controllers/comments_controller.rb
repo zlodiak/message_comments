@@ -24,29 +24,32 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    comment = Comment.new(comment_params)
-    comment.user = current_user
-    comment.save
+    message = Message.find(comment_params[:message_id]) 
 
-    if comment.update_attributes(user: current_user)
+    comment = Comment.new()
+    comment.user = current_user
+    comment.title = comment_params[:title]
+    comment.body = comment_params[:body]
+    comment.commentable_id = message.id
+    comment.commentable_type = 'Message'
+
+    if comment.save
       redirect_to messages_path, notice: 'Comment was successfully created.' 
-    else
-      render :new 
     end
   end
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+    #  if @comment.update(comment_params)
+    #    format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+    #    format.json { render :show, status: :ok, location: @comment }
+    #  else
+    #    format.html { render :edit }
+    #    format.json { render json: @comment.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # DELETE /comments/1
@@ -67,6 +70,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:title, :body)
+      params.require(:comment).permit(:title, :body, :message_id)
     end
 end

@@ -12,12 +12,13 @@ class MessagesController < ApplicationController
   def show
     @all_comments = @message.comment_threads  
 
-    p '--------------------'
-    p current_user
+    p '========================='
+    p @all_comments.count
+    p @all_comments
 
     @message = Message.find(params[:id])
     @user_who_commented = current_user
-    @comment = Comment.build_from( @message, @user_who_commented.id, "Hey guys this is my comment!" )      
+    @comment = Comment.build_from( @message, @user_who_commented.id, '' )      
   end
 
   # GET /messages/new
