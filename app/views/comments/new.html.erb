@@ -1,9 +1,9 @@
 add new comment to certain comment
 
-<%= @parent_id %>
-
 <%= form_for @comment do |f| %>
    <%= hidden_field(:comment, :message_id, :value => @message.id) %>
+   <%= hidden_field(:comment, :nested_flag, :value => '1') %>
+   <%= hidden_field(:comment, :parent_id, :value => @parent_id) %>
 
   <div class="row">
     <div class="form-group col-xs-12 col-sm-6">

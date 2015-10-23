@@ -2,6 +2,7 @@ add root comment for message
 
 <%= form_for @comment do |f| %>
    <%= hidden_field(:comment, :message_id, :value => @message.id) %>
+   <%= hidden_field(:comment, :nested_flag, :value => '0') %>
 
   <div class="row">
     <div class="form-group col-xs-12 col-sm-6">

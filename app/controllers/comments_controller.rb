@@ -36,9 +36,13 @@ class CommentsController < ApplicationController
     comment.commentable_id = message.id
     comment.commentable_type = 'Message'
 
+    if comment_params[:nested_flag] == '1'
+      comment.parent_id = comment_params[:parent_id]
+    end
+
     if comment.save
       redirect_to messages_path, notice: 'Comment was successfully created.' 
-    end
+    end    
   end
 
   # PATCH/PUT /comments/1
@@ -73,6 +77,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:title, :body, :message_id)
+      params.require(:comment).permit(:title, :body, :message_id, :nested_flag, :parent_id)
     end
 end
