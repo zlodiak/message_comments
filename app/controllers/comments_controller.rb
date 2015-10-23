@@ -36,13 +36,15 @@ class CommentsController < ApplicationController
     comment.commentable_id = message.id
     comment.commentable_type = 'Message'
 
+    comment.save
+    
     if comment_params[:nested_flag] == '1'
-      comment.parent_id = comment_params[:parent_id]
+      #comment.parent_id = comment_params[:parent_id]
+      comment.move_to_child_of(Comment.find(comment_params[:parent_id]))
     end
 
-    if comment.save
-      redirect_to messages_path, notice: 'Comment was successfully created.' 
-    end    
+    
+    redirect_to messages_path, notice: 'Comment was successfully created.' 
   end
 
   # PATCH/PUT /comments/1
