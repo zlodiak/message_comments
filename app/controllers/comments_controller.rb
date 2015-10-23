@@ -26,14 +26,11 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
     comment.user = current_user
-    p '==========================='
-    p comment
+    comment.save
+
     if comment.update_attributes(user: current_user)
-      p comment
-      p 'comment save'
       redirect_to messages_path, notice: 'Comment was successfully created.' 
     else
-      p 'comment not save'
       render :new 
     end
   end
