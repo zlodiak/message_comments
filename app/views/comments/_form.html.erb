@@ -1,0 +1,17 @@
+<%= form_for @comment do |f| %>
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-6">
+      <div class="label_block">title</div>
+      <%= f.text_field(:title, class: 'form-control') %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6">
+      <div class="label_block">body</div>
+      <%= f.text_area(:body, rows: 4, class: 'form-control') %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6 pull-right">
+      <%= f.submit 'submit', class: 'btn btn-default pull-right', id: 'createCommentSubmit' %>      
+    </div>       
+  </div>
+<% end %>

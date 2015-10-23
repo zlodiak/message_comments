@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>message Title:</strong>
   <%= @message.title %>
 </p>
 
 <p>
-  <strong>Body:</strong>
+  <strong>message Body:</strong>
   <%= @message.body %>
 </p>
 
-<% @comments.each do |comment| %>
+<%= render 'comments/form' %>
+
+<% @all_comments.each do |comment| %>
   <div>
-    <%= comment.title %>
+    <%= @comment.title %>
     <br>
-    <%= comment.title %>
+    <%= @comment.body %>
     <hr />
   </div>
 <% end %>
